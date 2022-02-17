@@ -38,19 +38,22 @@
             <div class="row g-lg-5 g-1">
 
                 <!-- Image section -->
-                <section class="col-12 col-lg-6">
-                    <div>
+                <section class="col-12 col-lg-6 mb-3">
+                    <div class="shadow">
                         <img class="img-fluid rounded-3" src="./media/img/calculator.jpg" alt="">
                     </div>
 
                 </section>
+
+                <!-- Income , calculation , saving section  -->
+
                 <section class="col-12 col-lg-6">
-                    <div class="d-flex flex-column align-items-center">
+                    <div class="d-flex flex-column align-items-center shadow rounded-3 mb-3">
 
                         <!-- Error Message Section -->
 
                         <div id="error-message"
-                            class="bg-warning border border-3 border-danger rounded-3 p-2 px-5 text-center text-dark fs-5 fw-bold mt-2">
+                            class="bg-warning border border-3 border-danger rounded-3 p-2 px-5 text-center text-dark fs-5 fw-bold mt-3">
                         </div>
 
                         <!-- Income Section -->
@@ -60,7 +63,7 @@
                             <label for="income"
                                 class="fs-5 d-flex flex-wrap justify-content-center align-items-center">Income:
                                 <input id="income-input" type="number"
-                                    class=" border-0 input-bg rounded-2 p-2 ms-1 me-1 col-lg-8 col-7" name="income"
+                                    class=" border-0 input-bg rounded-2 p-2 ps-3 ms-1 me-1 col-lg-8 col-7" name="income"
                                     id="income">
                             </label>
                         </section>
@@ -73,24 +76,24 @@
                                 <label for="food"
                                     class="fs-5 d-flex flex-wrap justify-content-center align-items-center">Food:
                                     <input id="food-input" type="number"
-                                        class="border-0 rounded-2 p-2 input-bg ms-1 me-1 col-lg-8 col-7" name="food"
-                                        id="food">
+                                        class="border-0 rounded-2 p-2 ps-3 input-bg ms-1 me-1 col-lg-8 col-7"
+                                        name="food" id="food">
                                 </label>
                             </div>
                             <div class="mb-3">
                                 <label for="rent"
                                     class="fs-5 d-flex flex-wrap justify-content-center align-items-center">Rent:
                                     <input id="rent-input" type="number"
-                                        class=" border-0 input-bg rounded-2 p-2 ms-1 me-1 col-lg-8 col-7" name="rent"
-                                        id="rent">
+                                        class=" border-0 input-bg rounded-2 p-2 ps-3 ms-1 me-1 col-lg-8 col-7"
+                                        name="rent" id="rent">
                                 </label>
                             </div>
                             <div>
                                 <label for="clothes"
                                     class="fs-5 d-flex flex-wrap justify-content-center align-items-center">Clothes:
                                     <input id="clothes-input" type="number"
-                                        class="border-0 input-bg rounded-2 p-2 ms-1 me-1 col-lg-8 col-7" name="clothes"
-                                        id="clothes">
+                                        class="border-0 input-bg rounded-2 p-2 ps-3 ms-1 me-1 col-lg-8 col-7"
+                                        name="clothes" id="clothes">
                                 </label>
                             </div>
                         </section>
@@ -112,7 +115,8 @@
                             <label for="save"
                                 class="fs-5 d-flex flex-wrap justify-content-center align-items-center">Save:
                                 <input id="save-input" type="number"
-                                    class=" border-0 input-bg rounded-2 p-2 ms-1 col-lg-8 col-7" name="save" id="save">
+                                    class=" border-0 input-bg rounded-2 p-2 ps-3 ms-1 col-lg-8 col-7" name="save"
+                                    id="save">
                             </label>
                             <span class="d-inline-block fs-3 fw-bold me-3">%</span>
                             <button id="save-calculation" class="btn btn-primary fs-5 fw-bold px-5 my-3">Save</button>
