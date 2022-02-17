@@ -1,12 +1,42 @@
+// Error Meassge Initial Values
+
 const errorMessage = document.getElementById('error-message');
 errorMessage.style.display = "none";
+
+// function for get input values
+
 function getInputValue(field) {
     const inputFieldText = document.getElementById(field);
     const inputFieldAmount = parseFloat(inputFieldText.value);
     return inputFieldAmount;
 
 }
-// function
+// function for display error message
+
+function displayErrorMessage(type) {
+    const errorMessage = document.getElementById('error-message');
+    if (type == 'negetive') {
+        errorMessage.style.display = "block";
+        errorMessage.innerText = "Please Insert Positive Values"
+    }
+    else if (type == 'omit') {
+        errorMessage.style.display = "block";
+        errorMessage.innerText = "Don't Omit Any Fields"
+    }
+    else if (type == 'expensesGreater') {
+        errorMessage.style.display = "block";
+        errorMessage.innerText = "Expenses Should Be Less Than Income"
+    }
+    else if (type == 'savingGreater') {
+        errorMessage.style.display = "block";
+        errorMessage.innerText = "Saving Should Be Less Than Balance"
+    }
+    else if (type == 'none') {
+        errorMessage.style.display = "none";
+    }
+}
+
+// Click Handler for Calculate Button
 
 document.getElementById('total-calculation').addEventListener('click', function () {
 
@@ -14,22 +44,18 @@ document.getElementById('total-calculation').addEventListener('click', function 
     const getFoodAmount = getInputValue('food-input');
     const getRentAmount = getInputValue('rent-input');
     const getClothesAmount = getInputValue('clothes-input');
-    const errorMessage = document.getElementById('error-message');
 
     if (getIncomeAmount < 0 || getFoodAmount < 0 || getRentAmount < 0 || getClothesAmount < 0) {
-        errorMessage.style.display = "block";
-        errorMessage.innerText = "Please Insert Positive Values"
+        displayErrorMessage('negetive');
     }
     else if (isNaN(getIncomeAmount) == true || isNaN(getFoodAmount) == true || isNaN(getRentAmount) == true || isNaN(getClothesAmount) == true) {
-        errorMessage.style.display = "block";
-        errorMessage.innerText = "Don't Omit Any Fields"
+        displayErrorMessage('omit')
     }
     else {
         const totalExpenses = document.getElementById('total-expenses');
         totalExpensesAmount = getFoodAmount + getRentAmount + getClothesAmount;
         if (totalExpensesAmount > getIncomeAmount) {
-            errorMessage.style.display = "block";
-            errorMessage.innerText = "Expenses Should be less than Income"
+            displayErrorMessage('expensesGreater');
         }
         else {
             totalExpenses.innerText = totalExpensesAmount;
@@ -39,29 +65,26 @@ document.getElementById('total-calculation').addEventListener('click', function 
     }
 })
 
+// Click Handler for Save Button
+
 document.getElementById('save-calculation').addEventListener('click', function () {
     const getIncomeAmount = getInputValue('income-input');
     const savePercentage = getInputValue('save-input');
     const savingAmountText = document.getElementById('saving-amount');
     const remainingBalance = document.getElementById('remaining-balance');
     const remainingBalanceAmount = parseFloat(remainingBalance.innerText);
-    console.log(remainingBalanceAmount);
     const remainingBalanceAfterSaving = document.getElementById('remaining-balance-after-saving');
-    const errorMessage = document.getElementById('error-message');
     const savingAmount = (getIncomeAmount * savePercentage) / 100;
 
     if (savePercentage < 0) {
-        errorMessage.style.display = "block";
-        errorMessage.innerText = "Please Insert Positive Values"
+        displayErrorMessage('negetive');
     }
     else if (isNaN(savePercentage) == true) {
-        errorMessage.style.display = "block";
-        errorMessage.innerText = "Don't Omit Any Fields"
+        displayErrorMessage('omit');
     }
 
-    else if (savingAmount >= remainingBalanceAmount) {
-        errorMessage.style.display = "block";
-        errorMessage.innerText = "Saving Should be less than Balance"
+    else if (savingAmount > remainingBalanceAmount) {
+        displayErrorMessage('savingGreater');
     }
     else {
         savingAmountText.innerText = savingAmount;
@@ -69,7 +92,11 @@ document.getElementById('save-calculation').addEventListener('click', function (
     }
 })
 
+// after click error message values
+
 document.getElementById('total-calculation').addEventListener('blur', function () {
-    const errorMessage = document.getElementById('error-message');
-    errorMessage.style.display = "none";
+    displayErrorMessage('none');
+})
+document.getElementById('save-calculation').addEventListener('blur', function () {
+    displayErrorMessage('none');
 })
